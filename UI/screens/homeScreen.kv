@@ -1,0 +1,268 @@
+
+#: import c kivy.utils.get_color_from_hex
+#: include UI/components/backgroundColor.kv
+
+<Event_options@AnchorLayout>
+    id: option
+    width: 200
+    height: 200
+    size_hint: None, None
+    anchor_y: 'bottom'
+    anchor_x: 'left'
+    GridLayout:
+        rows: 2
+        cols: 2
+        Label: 
+            text: 'add'
+            color: c('#454545')
+        Button:
+            text: '+'
+            font_size: 40
+            
+        Button:
+            text: "3"
+            font_name: 'Icon'
+            font_size: 50
+            markup: True
+        Label: 
+            text: 'add'
+            color: c('#454545')
+<Lbl_light@Label>    
+<Lbl_time@Label>:
+    font_size:40
+    font_name: "Roboto"
+    markup: True
+    color: c("#a9ddff")
+
+<Btn@Button>:
+    font_size: 30
+    font_name: 'Icon'
+    height: 50
+    size_hint_y: None
+    padding: 10, 10
+    background_normal: 'button_normal.png'
+    background_down: 'button_down.png'
+    canvas.before:
+        Color: 
+            rgba: (1,1,1, 1)
+        Rectangle:
+            size: self.size 
+            pos: self.pos
+
+<HomeScreen>:
+    orientation: "vertical" 
+
+    image:
+    title:
+
+    hour:
+    minute:
+    second:
+
+    days_remaining:
+
+    address:
+    city:
+    state:
+    BackgroundColor:
+        BoxLayout:
+            size_hint_y:None
+            height: 40
+            Label:
+                text: "Next Event.."
+                color: c("#00000")
+                font_size:20
+                bold: True
+            Label:
+                id: event_date
+                text: "Project 1"
+                color: c("#00000")
+
+        #EVENT IMAGE   
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'top'
+            size_hint_y: None
+            height: 100
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y:None
+                canvas.before:
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+                        source: 'Resources/images/wedding.jpg'
+                        
+            
+        
+        #EVENT DETAIL
+        BoxLayout:
+            padding: 20
+            spacing: 10
+            size_hint: 1, 1
+            orientation: 'vertical'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            canvas:
+                Color: 
+                    rgba: (0.5,0.5,.6, .1)
+                Rectangle:
+                    size: self.size 
+                    pos: self.pos
+            
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: 1, 0.7
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                AnchorLayout:
+                    anchor_x: 'center'
+                    anchor_y: 'center'
+                    padding: 0, 10
+                    Label:
+                        text: "{}".format(root.title)
+                        color: c('#053657')
+                        font_size: 20
+
+                AnchorLayout:
+                    anchor_x: 'center'
+                    anchor_y: 'center'
+                    Label:
+                        text: "{}, [b]{}[/b]".format(root.city, root.state)
+                        markup: True
+                        size_hint: 1, 0.1
+                        color: c('#1a98ec')
+
+
+            #REMAINING DAYS
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: 1, 0.8
+                padding: 2
+                AnchorLayout:
+                    anchor_x: 'center'
+                    anchor_y: 'center'
+                    Label:
+                        text: "{}".format(root.days_remaining)
+                        font_size:50
+                        font_name: "RobotoMedium"
+                        markup: True
+                        color: c("#1a98e")
+
+                AnchorLayout:
+                    Label:
+                        background: c("#454545")
+                        size_hint: 1, 0.2
+                        text: "[b]Days[/b] to go"
+                        font_size:15
+                        font_name: "RobotoLight"
+                        markup: True
+                        color: c("#452515")
+            
+            #HOURS, MIN, SEC
+            BoxLayout:
+                pos_hint: {'center_x': 0.5, 'center_y':0.5}
+                orientation: 'horizontal'
+                spacing: 5
+                padding: 10
+                size_hint_y: None
+
+                #Hour
+                BoxLayout:
+                    orientation: 'vertical'
+                    canvas:
+                        Color: 
+                            rgba: c('#1a98ec')
+                        Rectangle:
+                            size: self.size 
+                            pos: self.pos
+                    AnchorLayout:
+                        anchor_x: 'center'
+                        anchor_y: 'center'
+                        padding: 5, 10   
+                        Lbl_time:
+                            id: hour
+                            text: "{}".format(root.hour)
+
+                    AnchorLayout:
+                        anchor_x: 'center'
+                        anchor_y: 'center'  
+                        padding: 5, 10  
+                        Label:
+                            height: self.height
+                            size_hint_y: None
+                            text: 'Hour'
+                            bold: True
+
+                            
+                
+                #Min
+                BoxLayout:
+                    orientation: 'vertical'
+                    canvas:
+                        Color: 
+                            rgba: c('#1a98ec')
+                        Rectangle:
+                            size: self.size 
+                            pos: self.pos
+                    AnchorLayout:
+                        anchor_x: 'center'
+                        anchor_y: 'bottom'
+                        padding: 5, 10   
+                        Lbl_time:
+                            id: min
+                            text: "{}".format(root.minute)
+
+                    AnchorLayout:
+                        anchor_x: 'center'
+                        anchor_y: 'center'  
+                        padding: 5, 10  
+                        Label:
+                            size_hint: 1, 0.2
+                            text: 'Min'
+                            bold: True
+                
+                #Sec
+                BoxLayout:
+                    orientation: 'vertical'
+                    canvas:
+                        Color: 
+                            rgba: c('#1a98ec')
+                        Rectangle:
+                            size: self.size 
+                            pos: self.pos
+
+                    AnchorLayout:
+                        anchor_x: 'center'
+                        anchor_y: 'bottom'
+                        padding: 5, 10   
+                        Lbl_time:
+                            id: sec
+                            text: "{}".format(root.second)
+
+                    AnchorLayout:
+                        anchor_x: 'center'
+                        anchor_y: 'center'  
+                        padding: 5, 10  
+                        Label:
+                            size_hint: 1, 0.2
+                            text: 'Sec'
+                            bold: True
+
+        
+        BoxLayout:
+            size_hint:1, 0.2
+            Btn:
+                text: 'e'
+                color: c('##1a98ec')
+                on_press: app.option()
+            Btn:
+                text: 'w'
+                color: c('##1a98ec')
+            Btn:
+                text: 'v'
+                color: c('##1a98ec')
+            Btn:
+                text: 'h'
+                color: c('##1a98ec')
+        
+    
+            

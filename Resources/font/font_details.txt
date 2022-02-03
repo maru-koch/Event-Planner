@@ -1,0 +1,22 @@
+########################
+
+- HEADER COLOR - navy blue
+	- #000057ff
+
+- BACKGROUND COLOR - sky blue
+	- c7daffff
+
+- TITLE COLOR - orange
+	- #c56403ff
+
+- SUBTITLE - light blue
+	- #007fffff
+
+- HEADER FONT
+	- Ubuntu
+
+- HEADER FONT SIZE
+	- 16
+
+- SUB HEADER FONT
+	- 

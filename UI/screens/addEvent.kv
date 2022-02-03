@@ -1,0 +1,137 @@
+#: import c kivy.utils.rgba
+<Lbl@Label>:
+    halign: "left"
+    size_hint_y: None
+    height: 40
+    padding_top: 20
+<Sp@Spinner>
+    size_hint_y: None
+    size_hint_x: 1
+    height: 30
+<Sv@ScrollView>
+    do_scroll_x: False
+    do_scroll_y:True
+    size_hint_x: 1
+    size_hint_y: None
+    height: 100
+    scroll_distance:'10px'
+    bar_margin: 10
+    scroll_type: ['bars']
+    scroll_y: 1
+    bar_width: 20
+    pos_hint: {'center_x':0.5, 'center_y': 0.5}
+<RegInput@TextInput>:
+    group: input
+    bold: True
+    size_hint_y: None
+    height: 35
+    color: c("#454545")
+    markup: True
+    on_focus: self.text = ''
+    font_size: 14
+    padding_left: 20
+    font_name: 'NotoMono'
+BoxLayout: 
+    orientation: "vertical"
+    spacing: 3
+    padding: 2
+    pos_hint: {'center_x':0.5, 'center_y': 0.5}
+    BoxLayout:
+        size_hint_y: 0.2
+        Label:
+            text:"Event details"
+            font_size: 18
+            font_name: 'NotoMono'
+            markup: True
+    GridLayout:
+        cols: 1
+        pos_hint: {'center_x':0.5, 'center_y': 0.5}
+        spacing: 30
+        size_hint: 1, 1
+        padding: 10
+        spacing: 5
+        GridLayout:
+            rows: 5
+            spacing: 10
+            pos_hint: {'center_x':0.5, 'center_y': 0.5}
+            RegInput:
+                id: name
+                text: 'Event Name'
+                markup: True
+            RegInput:
+                text: 'Address'
+                id: address
+            RegInput:
+                text: 'Event Name'
+                id: State
+            GridLayout:
+                cols: 2
+                RegInput:
+                    width: 200
+                    size_hint_x: None
+                    id: city
+                    text: 'City'
+                Button:
+                    text: ":"
+                    size_hint_y: None
+                    height: 35
+            GridLayout:
+                rows: 2
+                padding: (20, 0)
+                spacing: 10
+                size_hint_y: None
+                height: 100
+                GridLayout:
+                    rows: 2
+                    Lbl:
+                        text: "Date"
+                    GridLayout:
+                        cols: 3
+                        Sv:
+                            Sp:
+                                id: Month
+                                values: ['January','February','March','April','May','June','July','August','September','October','November','December']
+                        Sv:
+                            Sp:
+                                id: day
+                                values: ['1','2', '3','4', '5','6', '7','8', '9','10', '11','12', '13','14', '15','16', '17','18','19','20', '21','22', '23','24', '25','26', '27','28', '29','30', '31']
+                        Sv:
+                            Sp:
+                                id: year
+                                values: ['2020','2021','2022','2023','2024', '2025']
+                GridLayout:
+                    rows: 2
+                    padding: 10
+                    Lbl:
+                        text: "Time"
+                    GridLayout:
+                        cols: 3
+                        Sv:
+                            Sp:
+                                id: hour
+                                values: ['12','1','2', '3','4', '5','6', '7','8', '9','10', '11']
+                        Sv:
+                            Sp:
+                                id: minute
+                                values: ['00','01','02', '03','04', '05','06', '07','08', '09','10', '11','12', '13','14', '15','16', '17','18','19','20', '21','22', '23','24', '25','26', '27','28', '29','30', '31']
+                        Sv:
+                            Sp:
+                                id: am
+                                values: ['AM','PM']
+
+    FloatLayout:
+        size_hint_y: 0.4
+        Button:
+            width: "100dp"
+            height: "40dp"
+            size_hint: None, None
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            background_normal: 'button_normal.png'
+            background_down: "button_down.png"
+            text: "[font="kivy.png"]e[/font]"
+            background_color: c("#E74C3C")
+            text: "Add Event"
+            font_name: 'NotoMono'
+            border: (5, 3, 5, 3)
+            
+
